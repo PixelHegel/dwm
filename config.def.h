@@ -34,6 +34,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Spotify",  NULL,       NULL,       1 << 1,       0,           -1 }
 };
 
 /* layout(s) */
@@ -67,6 +68,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]   = { "ponymix", "increase", "5", NULL };
 static const char *mutevol[] = { "ponymix", "toggle", NULL };
 static const char *downvol[] = { "ponymix", "decrease", "5", NULL };
+static const char *spotify[] = { "spotify", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -119,9 +121,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY,                       XK_minus, spawn, {.v = downvol } },
-	{ MODKEY,                       XK_F10,    spawn, {.v = mutevol } },
-	{ MODKEY,                       XK_equal,  spawn, {.v = upvol   } },
+	{ MODKEY,                       XK_minus, spawn,           {.v = downvol } },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = mutevol } },
+	{ MODKEY,                       XK_equal,  spawn,          {.v = upvol   } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = spotify}}, 
 	
 };
 
