@@ -47,10 +47,10 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 #include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "[@]",      spiral },	/* first entry is default */
+	{ "[]=",      tile },    
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "[@]",      spiral },
 	{ "[\\]",      dwindle },
 };
 
@@ -74,6 +74,13 @@ static const char *mutevol[] = { "ponymix", "toggle", NULL };
 static const char *downvol[] = { "ponymix", "decrease", "5", NULL };
 static const char *spotify[] = { "spotify", NULL};
 static const char *brave[] = { "brave", NULL};
+static const char *wallp1[] = { "/home/pixelhegel/.dwm/wallpaper_change_by_tag.sh","1", NULL};
+static const char *wallp2[] = { "/home/pixelhegel/.dwm/wallpaper_change_by_tag.sh","2", NULL};
+static const char *wallp3[] = { "/home/pixelhegel/.dwm/wallpaper_change_by_tag.sh","3", NULL};
+static const char *wallp4[] = { "/home/pixelhegel/.dwm/wallpaper_change_by_tag.sh","4", NULL};
+static const char *wallp5[] = { "/home/pixelhegel/.dwm/wallpaper_change_by_tag.sh","5", NULL};
+
+
 
 
 static Key keys[] = {
@@ -81,6 +88,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = brave } },
+	{ MODKEY,             			XK_1,      spawn,          {.v = wallp1 } },
+	{ MODKEY,             			XK_2,      spawn,          {.v = wallp2 } },
+	{ MODKEY,             			XK_3,      spawn,          {.v = wallp3 } },
+	{ MODKEY,             			XK_4,      spawn,          {.v = wallp4 } },
+	{ MODKEY,             			XK_5,      spawn,          {.v = wallp5 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
