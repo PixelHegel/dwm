@@ -10,7 +10,7 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Source Code Pro:size=12" };
+static const char *fonts[]          = { "Source Code Pro:size=12","JoyPixels:pixelsize=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Source Code Pro:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -35,7 +35,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Spotify",  NULL,       NULL,       1 << 1,       0,           -1 }
+	{ "spotify",  NULL,       NULL,       1 << 8,       0,           -1 }
 };
 
 /* layout(s) */
@@ -68,6 +68,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *clipmenucmd[] = { "clipmenu", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]   = { "ponymix", "increase", "5", NULL };
 static const char *mutevol[] = { "ponymix", "toggle", NULL };
@@ -86,13 +87,14 @@ static const char *wallp5[] = { "/home/pixelhegel/.dwm/wallpaper_change_by_tag.s
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ ControlMask,                  XK_p,      spawn,          {.v = clipmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = brave } },
-	{ MODKEY,             			XK_1,      spawn,          {.v = wallp1 } },
-	{ MODKEY,             			XK_2,      spawn,          {.v = wallp2 } },
-	{ MODKEY,             			XK_3,      spawn,          {.v = wallp3 } },
-	{ MODKEY,             			XK_4,      spawn,          {.v = wallp4 } },
-	{ MODKEY,             			XK_5,      spawn,          {.v = wallp5 } },
+	{ MODKEY,             		XK_1,      spawn,          {.v = wallp1 } },
+	{ MODKEY,             		XK_2,      spawn,          {.v = wallp2 } },
+	{ MODKEY,             		XK_3,      spawn,          {.v = wallp3 } },
+	{ MODKEY,             		XK_4,      spawn,          {.v = wallp4 } },
+	{ MODKEY,             		XK_5,      spawn,          {.v = wallp5 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
